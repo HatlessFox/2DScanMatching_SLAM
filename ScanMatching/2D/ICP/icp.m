@@ -62,7 +62,7 @@ rejval = opts.scanmatcher.Br(2);
 
 if DEBUG.cpAssociation || DEBUG.all
     scrsz = get(0,'ScreenSize');
-    opts.fighandle=figure('Position',scrsz,'Renderer','zbuffer','doublebuffer','on');
+    opts.fighandle=figure('Position',scrsz,'doublebuffer','on');
     axis equal;
     xlabel('X (m)'); ylabel('Y (m)');
     hold all

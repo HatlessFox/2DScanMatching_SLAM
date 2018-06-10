@@ -29,31 +29,30 @@ for i = 1:nBeams
     
     Tr(1) = T(1) + cos(angle) * sonarRange;
     Tr(2) = T(2) + sin(angle) * sonarRange;
+
+    beam_segment = [T(1) T(2); Tr(1) Tr(2)];
+    pts = intersectPolylines(World.segments.coord,
+                             beam_segment);
     
-    [xout yout] = polyxpoly(World.segments.coord(:,1),World.segments.coord(:,2),...
-        [T(1) Tr(1)],[T(2) Tr(2)]);
-    
-    
-    if(isempty(xout) )
+    if(isempty(pts) )
         skipped = skipped +1;
         continue;
     end
     
-    if size(xout,1) > 1
+    if size(pts,1) > 1
         mind = inf;
-        for k = 1:size(xout,1)
-            d = ptsDistance([xout(k) yout(k)],T(1:2));
+        for k = 1:size(pts,1)
+            d = ptsDistance(pts(k, :),T(1:2));
             if(d < mind)
-                cxout = xout(k);
-                cyout = yout(k);
+                cxout = pts(k, 1);
+                cyout = pts(k, 2);
                 mind = d;
             end
         end
     else
-        cxout = xout;
-        cyout = yout;
+        cxout = pts(1, 1);
+        cyout = pts(1, 2);
     end
-    
     d = norm([cxout-T(1),cyout-T(2)]);
     
     ns = stdErr(0,noise);
@@ -68,12 +67,13 @@ for i = 1:nBeams
     cxout = cxout+(ns*d)*cos(beamangle);
     cyout = cyout+(ns*d)*sin(beamangle);
     
-    localCart = cartProject([cxout cyout ], -rad, (e2R([0 0 -rad])*[-(T(1:2)*outlp)' 1]')' );
+    localCart = cartProject([cxout cyout ], -rad,
+                            (e2R([0 0 -rad])*[-(T(1:2)*outlp)' 1]')' );
 
     %localCart = cartProject([cxout cyout ], rad(3), (e2R([0 0 rad(3)])*[(T(1:2)*outlp)' 1]')' );
     
     
-    % Return the points locally referenced
+    # Return the points locally referenced
     localCart2D(i-skipped,1:2) = [localCart(1:2)];
     [la lr] = cart2pol(localCart2D(i-skipped,1), localCart2D(i-skipped,2) );
     localPolar2D(i-skipped,1:2) = [ la lr  ];

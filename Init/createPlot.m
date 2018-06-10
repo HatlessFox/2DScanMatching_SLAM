@@ -5,7 +5,7 @@ global Opt
 
 
 scrsz = get(0,'ScreenSize');
-Opt.plot.figure=figure('Position',scrsz,'Renderer','zbuffer','doublebuffer','on');
+Opt.plot.figure=figure('Position',scrsz, 'doublebuffer','on');
 %axis([-20 20  -20 20]);
 axis equal;
 xlabel('X (m)'); ylabel('Y (m)');
