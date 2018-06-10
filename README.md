@@ -3,6 +3,14 @@
 * make the implementation Octave-friendly
 * refactor, clean up, update
 
+## Execution
+
+Octave with `statistics`, `octclip`, `geometry` packages installed is assumed:
+
+```
+octave run_experiment
+```
+
 # Scan Matching 2D Toolbox
 
 The Scan Matching 2D Toolbox is a collection of 2D ScanMatching functions for range finder sensors.
