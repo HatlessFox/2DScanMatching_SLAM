@@ -1,3 +1,8 @@
+# Fork Motivation
+
+* make the implementation Octave-friendly
+* refactor, clean up, update
+
 # Scan Matching 2D Toolbox
 
 The Scan Matching 2D Toolbox is a collection of 2D ScanMatching functions for range finder sensors.
