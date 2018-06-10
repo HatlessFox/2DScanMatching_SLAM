@@ -1,6 +1,0 @@
-function B = pol2cartM(A)
-%Convert a row ordered matrix of polar coordinates to cartesian coordinates
-B = zeros(size(A,1),2);
-for i = 1:size(A,1)
-    [B(i,1) B(i,2)] = 2polcart(A(i,1), A(i,1));
-end

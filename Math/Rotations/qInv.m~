@@ -1,9 +1,0 @@
-function [ r ] = qInv( q )
-% Compute the invere of a given quaternion q
-
-[a,b,c,d] = split(q1);
-q2 = (a+b+c+d)^2;
-r = a-b-c-d
-
-end
-

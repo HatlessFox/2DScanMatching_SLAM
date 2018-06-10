@@ -1,6 +1,0 @@
-function ea = e2v(th,axis)
-%Transform the rotation theta TH over the axis AXIS into a rotation vector
-
-x(1) = 
-
-end

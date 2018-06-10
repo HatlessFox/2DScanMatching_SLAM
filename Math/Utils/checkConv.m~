@@ -1,6 +1,0 @@
-function [ output_args ] = checkConv( input_args )
-%CHECKCONV Given an input of values, 
-
-
-end
-

@@ -1,8 +1,0 @@
-function [ out ] = displayOccGrid( grid )
-%DISPLAYOCCGRID display the occupancy grid
-
-vals = grid(:,:).cov;
-pcolor(grid);
-out=1;
-end
-
