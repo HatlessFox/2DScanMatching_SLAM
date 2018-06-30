@@ -2,14 +2,22 @@
 
 * make the implementation Octave-friendly
 * refactor, clean up, update
+* implement sm-testing oriented interface
 
 ## Execution
 
-Octave with `statistics`, `octclip`, `geometry` packages installed is assumed:
+Octave with `statistics`, `octclip`, `geometry`, `signal` packages
+installed is assumed:
 
 ```
 octave run_experiment
 ```
+
+## Status
+
+Tested scan matchers:
+* icp
+* ahsm (angle histogram sm)
 
 # Scan Matching 2D Toolbox
 

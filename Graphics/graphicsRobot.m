@@ -4,14 +4,16 @@ function [ trpt ] = graphicsRobot( pos)
 global Opt
 scale = Opt.plot.robot_scale;
 
-q = pos(3);
-pos = [pos(1:2); 1];
-trp = [ -1 -0.5 1; 1 0 1; -1 0.5 1];
+yaw = pos(3);
+pos = [pos(1:2)];
+
+trp = [ -1 -0.5; 1 0; -1 0.5];
 trp = (trp) * scale;
 
-trpt = [ e2R([0 0 q]) * trp(1,:)' + pos  ...
-    e2R([0 0 q]) * trp(2,:)' + pos  ...
-    e2R([0 0 q]) * trp(3,:)' + pos ];
-
+rot = [cos(yaw) -sin(yaw); sin(yaw) cos(yaw)];
+trpt = [ rot * trp(1,:)' + pos  ...
+         rot * trp(2,:)' + pos  ...
+         rot * trp(3,:)' + pos ];
 end
+
 
